@@ -1,0 +1,21 @@
+version: "3.1"
+
+services:
+    server:
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+        ports:
+            - "1234:80"
+        volumes:
+            - data:/usr/share/nginx/html
+
+    worker:
+        build:
+            context: ./worker
+            dockerfile: Dockerfile
+        volumes:
+            - data:/usr/share/nginx/html
+
+volumes:
+    data: null
